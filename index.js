@@ -25,7 +25,7 @@ program
 
 program.command('list-products')
     .description('List all products being tracked')
-    .action((str, options) => listProducts(str, options, databaseConnection, productModel));
+    .action((_, options) => listProducts(_, options, databaseConnection, productModel));
 
 program.command('add-product <product_url>')
     .description('Add a product to be tracked')
