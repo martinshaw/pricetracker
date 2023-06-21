@@ -13,17 +13,17 @@ const { Sequelize, DataTypes } = require('sequelize');
 
 const productModelBuilder = (connection) => {
     const productModel = connection.define('Product', {
-        product_id: {
+        productId: {
             type: DataTypes.INTEGER,
             autoIncrement: true,
             primaryKey: true
         },
-        product_amazon_id: DataTypes.STRING,
-        product_name: DataTypes.STRING,
-        product_url: DataTypes.STRING,
-        product_image_url: DataTypes.STRING,
-        product_latest_price: DataTypes.FLOAT,
-        product_currency: DataTypes.STRING,
+        productAmazonId: DataTypes.STRING,
+        productName: DataTypes.STRING,
+        productUrl: DataTypes.STRING,
+        productImageUrl: DataTypes.STRING,
+        productLatestPrice: DataTypes.FLOAT,
+        productCurrency: DataTypes.STRING,
     }, {
         sequelize: connection,
         timestamps: true,

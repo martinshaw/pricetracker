@@ -46,7 +46,7 @@ const addProduct = async (product_url, options, dbConnection, productModel) => {
 
     const productCheck = await productModel.findOne({
         where: {
-            product_amazon_id: productAmazonUrl
+            productAmazonId: productAmazonUrl
         }
     });
 
@@ -56,15 +56,15 @@ const addProduct = async (product_url, options, dbConnection, productModel) => {
     }
 
     const newProduct = await productModel.create({
-        product_amazon_id: productAmazonSID,
-        product_name: 'Product Name',
-        product_url: productAmazonUrl,
-        product_image_url: 'https://amazon.com/images/product.png',
-        product_latest_price: 123.45,
-        product_currency: 'USD',
+        productAmazonId: productAmazonSID,
+        productName: 'Product Name',
+        productUrl: productAmazonUrl,
+        productImageUrl: 'https://amazon.com/images/product.png',
+        productLatestPrice: 123.45,
+        productCurrency: 'USD',
     });
 
-    console.log('Product added successfully with ID: ' + newProduct.product_id + ' and Amazon ID: ' + newProduct.product_amazon_id + ' !');
+    console.log('Product added successfully with ID: ' + newProduct.productId + ' and Amazon ID: ' + newProduct.productAmazonId + ' !');
 
 };
 

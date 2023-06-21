@@ -32,18 +32,21 @@ const listProducts = async (_, options, dbConnection, productModel) => {
             'Product URL',
             'Product Image URL',
             'Latest Price',
-            ''
+            'Created At',
+            'Updated At',
         ],
     });
     
     products.forEach(product => {
         productsTable.push([
-            product.product_id,
-            product.product_amazon_id,
-            product.product_name,
-            product.product_url,
-            product.product_image_url,
-            product.product_latest_price + ' ' + product.product_currency,
+            product.productId,
+            product.productAmazonId,
+            product.productName,
+            product.productUrl,
+            product.productImageUrl,
+            product.productLatestPrice + ' ' + product.productCurrency,
+            product.createdAt,
+            product.updatedAt,
         ]);
     });
 
