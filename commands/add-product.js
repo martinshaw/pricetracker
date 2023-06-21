@@ -9,9 +9,9 @@ Modified: 2023-06-21T16:58:32.270Z
 Description: description
 */
 
-const addProduct = async (product_url, options, dbConnection, productModel) => {
+const addProduct = async (product_url, options, databaseConnection, productModel) => {
 
-    await dbConnection.sync();
+    await databaseConnection.sync();
 
     const validateAmazonProductUrl = (value) => {
         // get the product ID B0140RDK8W from the URL using regex

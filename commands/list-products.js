@@ -11,9 +11,9 @@ Description: description
 
 const Table = require('cli-table');
 
-const listProducts = async (_, options, dbConnection, productModel) => {
+const listProducts = async (_, options, databaseConnection, productModel) => {
 
-    await dbConnection.sync();
+    await databaseConnection.sync();
 
     const products = await productModel.findAll();
 

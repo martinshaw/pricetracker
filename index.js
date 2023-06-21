@@ -9,8 +9,8 @@ Modified: 2023-06-21T16:19:50.895Z
 Description: description
 */
 
-const dbConnection = require('./db/connection');
-const productModel = require('./db/models/product')(dbConnection);
+const databaseConnection = require('./database/connection');
+const productModel = require('./database/models/product')(databaseConnection);
 
 const listProducts = require('./commands/list-products');
 const addProduct = require('./commands/add-product');
@@ -25,10 +25,10 @@ program
 
 program.command('list-products')
     .description('List all products being tracked')
-    .action((str, options) => listProducts(str, options, dbConnection, productModel));
+    .action((str, options) => listProducts(str, options, databaseConnection, productModel));
 
 program.command('add-product <product_url>')
     .description('Add a product to be tracked')
-    .action((product_url, options) => addProduct(product_url, options, dbConnection, productModel));
+    .action((product_url, options) => addProduct(product_url, options, databaseConnection, productModel));
 
 program.parse();
