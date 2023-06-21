@@ -11,8 +11,6 @@ Description: description
 
 const addProduct = async (product_url, options, databaseConnection, productModel) => {
 
-    await databaseConnection.sync();
-
     const validateAmazonProductUrl = (value) => {
         // get the product ID B0140RDK8W from the URL using regex
         //http://www.amazon.com/gp/product/B0140RDK8W/ref=s9_simh_gw_g107_i2_r?ie=UTF8&fpl=fresh&pf_rd_m=ATVPDKIKX0DER&pf_rd_s=desktop-1&pf_rd_r=0539QT0WGAX6VJZ73PV9&pf_rd_t=36701&pf_rd_p=2437869742&pf_rd_i=desktop
@@ -44,9 +42,11 @@ const addProduct = async (product_url, options, databaseConnection, productModel
         return;
     }
 
+    await databaseConnection.sync();
+
     const productCheck = await productModel.findOne({
         where: {
-            productAmazonId: productAmazonUrl
+            productAmazonId: productAmazonSID,
         }
     });
 
