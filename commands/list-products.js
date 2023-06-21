@@ -32,6 +32,7 @@ const listProducts = async (_, options, dbConnection, productModel) => {
             'Product URL',
             'Product Image URL',
             'Latest Price',
+            ''
         ],
     });
     

@@ -24,6 +24,9 @@ const productModelBuilder = (connection) => {
         product_image_url: DataTypes.STRING,
         product_latest_price: DataTypes.FLOAT,
         product_currency: DataTypes.STRING,
+    }, {
+        sequelize: connection,
+        timestamps: true,
     });
 
     productModel.sync();
