@@ -12,9 +12,22 @@ Description: description
 const { Sequelize, DataTypes } = require('sequelize');
 const path = require('path');
 
+// Sequelize is a library that helps us to connect to databases also known as an ORM (Object Relational Mapper)
+//   It allows us to use nice JavaScript functions to interact with databases instead of SQL
+
+// This also means that we can use any type of database we want, as long as Sequelize supports it and we don't
+//   need to change our code.
+
 const sequelize = new Sequelize({
+    // We must specify the dialect (type) of database we are using
+    // Sqlite is a simple database that stores all of its data in a single file (database.db) instead 
+    //   of having to install and setup a database server like with MySQL or PostgreSQL
     dialect: 'sqlite',
+    
+    // We must use the absolute path to the database file
     storage: path.resolve(__dirname, '../database.db'),
+    
+    // By default, Sequelize will log all SQL queries to the console. We don't want that on a nice command line tool.
     logging: false,
 });
 

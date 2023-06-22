@@ -9,7 +9,7 @@ Modified: 2023-06-21T16:58:32.270Z
 Description: description
 */
 
-const addProduct = async (product_url, options, databaseConnection, productModel) => {
+const addProduct = async (product_url, databaseConnection, productModel) => {
 
     const validateAmazonProductUrl = (value) => {
         // get the product ID B0140RDK8W from the URL using regex
@@ -42,8 +42,11 @@ const addProduct = async (product_url, options, databaseConnection, productModel
         return;
     }
 
+    // This line stops the program so that Sequelize can connect to the database and ensure that the latest
+    //   changes are reflected in the database before we try to read from it.
     await databaseConnection.sync();
 
+    // This returned an object containing the product data, or null if no product was found.
     const productCheck = await productModel.findOne({
         where: {
             productAmazonId: productAmazonSID,
@@ -55,6 +58,7 @@ const addProduct = async (product_url, options, databaseConnection, productModel
         return;
     }
 
+    // This creates a new product model instance and saves it to the database as a new table row. 
     const newProduct = await productModel.create({
         productAmazonId: productAmazonSID,
         productName: 'Product Name',
